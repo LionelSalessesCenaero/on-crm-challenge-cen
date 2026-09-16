@@ -130,6 +130,477 @@
 </section>
 <!-- End paper abstract -->
 
+<!-- ========================= Challenge -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">The ONERA CRM Wall Distribution Challenge</h2>
+    <div class="content">
+      <p>
+        High-fidelity CFD simulations are essential for aerodynamic design, but
+        their computational cost makes them impractical for applications
+        requiring a large number of evaluations. The ONERA CRM Wall
+        Distribution Regression Challenge investigates whether machine-learning
+        surrogate models can accurately reproduce aerodynamic wall quantities
+        at a fraction of the computational cost of CFD.
+      </p>
+      <p>
+        The benchmark is based on the NASA/Boeing Common Research Model
+        Wing-Body-Pylon-Nacelle (CRM-WBPN) configuration. The task is to predict
+        the pressure coefficient and the three components of the skin-friction
+        coefficient over the aircraft surface from the surface geometry and
+        aerodynamic operating conditions.
+      </p>
+      <p>
+        The challenge is particularly demanding because the dataset combines
+        a complex three-dimensional geometry, multiple aerodynamic regimes,
+        localized flow phenomena such as shocks and separation, and a limited
+        number of available CFD simulations.
+      </p>
+    </div>
+
+    <!-- PLACEHOLDER:
+         Include Figure 1 from the paper here:
+         "NASA Common Research Model geometry"
+    -->
+
+    <div class="content has-text-centered">
+      <p>
+        <strong>260,774</strong> surface points per simulation
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <strong>468</strong> RANS simulations
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <strong>312</strong> training configurations
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <strong>146</strong> hidden test configurations
+      </p>
+    </div>
+
+    <div class="content">
+      <p>
+        An additional difficulty is that the CFD mesh used to generate the
+        simulations is not provided. Only surface coordinates, surface normals,
+        aerodynamic conditions, and wall quantities are available. This
+        prevents the direct use of methods relying on mesh connectivity and
+        motivates a mesh-independent representation.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========================= Key Challenges -->
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Why is the Problem Difficult?</h2>
+    <div class="columns is-multiline">
+      <div class="column is-half">
+        <div class="content">
+          <h3 class="title is-5">Complex geometry</h3>
+          <p>
+            The CRM-WBPN combines the wing, fuselage, pylon, and nacelle into
+            a complex three-dimensional surface that cannot be naturally
+            represented on a regular Cartesian grid.
+          </p>
+        </div>
+      </div>
+
+      <div class="column is-half">
+        <div class="content">
+          <h3 class="title is-5">Limited data</h3>
+          <p>
+            Only 312 simulations are available for model development, despite
+            the large variability of the aerodynamic flow fields.
+          </p>
+        </div>
+      </div>
+
+      <div class="column is-half">
+        <div class="content">
+          <h3 class="title is-5">Multiple flow regimes</h3>
+          <p>
+            The database spans Mach numbers from 0.3 to 0.96 and angles of
+            attack from -15° to 15°, including transonic shocks, flow
+            separation, and configurations approaching stall.
+          </p>
+        </div>
+      </div>
+
+      <div class="column is-half">
+        <div class="content">
+          <h3 class="title is-5">Multiscale fields</h3>
+          <p>
+            The target fields contain both smooth regions and highly localized
+            variations. In particular, pressure fields may exhibit sharp
+            transonic shocks, while skin-friction fields contain abrupt
+            variations associated with complex flow phenomena.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="content">
+      <p>
+        The competition also imposed a limit of 20 submissions to the hidden
+        test set. Reliable local validation was therefore essential, while
+        reserving validation data necessarily reduced the amount of data
+        available for training.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========================= Proposed Methodology -->
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Proposed Methodology</h2>
+
+    <div class="content">
+      <p>
+        Rather than introducing a new neural architecture, we investigate how
+        existing machine-learning techniques can be combined effectively for
+        this challenging low-data aerodynamic surrogate-modeling problem.
+      </p>
+
+      <p>
+        We formulate aerodynamic field prediction as a
+        <strong>conditional neural field</strong>. The model takes the spatial
+        coordinates and surface normal of a point together with the aerodynamic
+        operating conditions and predicts the four wall quantities at that
+        location:
+        <em>C<sub>p</sub></em>,
+        <em>C<sub>f,x</sub></em>,
+        <em>C<sub>f,y</sub></em>, and
+        <em>C<sub>f,z</sub></em>.
+      </p>
+    </div>
+
+    <!-- PLACEHOLDER:
+         Insert the methodology/architecture figure created for the paper.
+         It should show:
+         coordinates -> Fourier Feature Encoding
+         normal + Mach + AoA + p_i
+         -> MLP
+         -> Cp, Cfx, Cfy, Cfz
+         and the RSE loss, ensemble and k-fold strategy.
+    -->
+
+    <div class="content">
+      <h3 class="title is-5">Mesh-independent representation</h3>
+
+      <p>
+        Because the CFD mesh is unavailable, the model operates directly on
+        the point-wise representation of the aircraft surface. No mesh
+        connectivity or manually constructed surface parameterization is
+        required.
+      </p>
+
+      <h3 class="title is-5">Fourier feature encoding</h3>
+
+      <p>
+        Standard MLPs tend to learn low-frequency components preferentially.
+        To improve the representation of localized flow structures, the
+        Cartesian coordinates are transformed using Fourier feature encoding
+        before being provided to the neural network.
+      </p>
+
+      <h3 class="title is-5">Metric-aligned training</h3>
+
+      <p>
+        The challenge score combines global accuracy with a worst-case relative
+        error. We therefore replace the conventional mean squared error with a
+        relative squared error objective, encouraging the model to reduce
+        relative prediction errors across the different flow configurations.
+      </p>
+
+      <h3 class="title is-5">Ensemble learning</h3>
+
+      <p>
+        Multiple neural fields are trained independently and their predictions
+        are averaged. This reduces the variance associated with individual
+        models and improves robustness, particularly for difficult
+        configurations.
+      </p>
+
+      <h3 class="title is-5">K-fold cross-validation</h3>
+
+      <p>
+        Finally, the available 312 simulations are partitioned into five folds.
+        Models trained on the different folds are combined into the final
+        ensemble, allowing every available simulation to contribute to model
+        training while increasing ensemble diversity.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========================= Progressive Development -->
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">From a Simple Neural Field to the Winning Solution</h2>
+
+    <div class="content">
+      <p>
+        The final solution was not obtained from a single architectural
+        innovation. Instead, it emerged through a progressive development
+        process in which each component was evaluated experimentally.
+      </p>
+    </div>
+
+    <!-- PLACEHOLDER:
+         Insert Table 2 from the paper:
+         "Progressive improvement of the solution throughout the development process"
+    -->
+
+    <div class="content">
+      <p>
+        Starting from a simple coordinate-based MLP, we progressively introduced
+        Fourier feature encoding, increased model capacity, a relative squared
+        error loss, ensemble learning, and finally a k-fold cross-validation
+        ensemble.
+      </p>
+    </div>
+
+    <div class="columns is-multiline has-text-centered">
+
+      <div class="column is-one-sixth">
+        <p class="title is-4">7.80</p>
+        <p>Initial neural field</p>
+      </div>
+
+      <div class="column is-one-sixth">
+        <p class="title is-4">8.34</p>
+        <p>+ Fourier features</p>
+      </div>
+
+      <div class="column is-one-sixth">
+        <p class="title is-4">8.45</p>
+        <p>+ Model capacity</p>
+      </div>
+
+      <div class="column is-one-sixth">
+        <p class="title is-4">8.58</p>
+        <p>+ RSE loss</p>
+      </div>
+
+      <div class="column is-one-sixth">
+        <p class="title is-4">8.65</p>
+        <p>+ Ensemble</p>
+      </div>
+
+      <div class="column is-one-sixth">
+        <p class="title is-4">8.81</p>
+        <p>+ K-fold ensemble</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ========================= Final Results -->
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Final Results</h2>
+
+    <div class="content">
+      <p>
+        The final model achieved a score of <strong>8.81</strong> on the hidden
+        competition test set, ranking first among all submitted approaches.
+        The strongest organizer-provided baseline, a Global MLP, obtained a
+        score of 8.64.
+      </p>
+
+      <p>
+        Importantly, the neural-field approach achieves this performance with
+        substantially fewer trainable parameters than the Global MLP baseline.
+        The final solution consists of an ensemble of neural fields, with
+        approximately 73 million parameters in total, compared with
+        approximately 17 billion parameters for the Global MLP.
+      </p>
+    </div>
+
+    <!-- PLACEHOLDER:
+         Insert Table 1 from the paper:
+         "Top-ranked solutions on the final hidden test set"
+    -->
+
+    <div class="content">
+      <h3 class="title is-5">Quantitative performance</h3>
+
+      <p>
+        On the hidden test set, the final methodology reaches an overall
+        <em>R</em><sup>2</sup> of 0.973 and a worst-case relative mean absolute
+        error of 0.210. Improvements are observed across the four predicted
+        quantities, with the largest remaining errors associated with difficult
+        flow configurations and localized spatial structures.
+      </p>
+    </div>
+
+    <!-- PLACEHOLDER:
+         Insert a plot/table comparing:
+         R²_Cp, R²_Cfx, R²_Cfy, R²_Cfz
+         wrMAE_Cp, wrMAE_Cfx, wrMAE_Cfy, wrMAE_Cfz
+         for the Global MLP and final neural-field ensemble.
+    -->
+  </div>
+</section>
+
+
+<!-- ========================= Qualitative Results -->
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Aerodynamic Field Predictions</h2>
+
+    <div class="content">
+      <p>
+        The predictions remain in close agreement with the reference CFD
+        solutions over most of the aircraft surface. The largest discrepancies
+        are concentrated in regions with strong spatial gradients, including
+        transonic shocks and regions affected by flow separation.
+      </p>
+    </div>
+
+    <!-- PLACEHOLDER:
+         Insert Figure 4 from the paper:
+         Pressure coefficient and friction-field prediction for
+         M∞ = 0.5, AoA = 0°, p_i = 4.0 × 10^5 Pa.
+    -->
+
+    <div class="content has-text-centered">
+      <p>
+        <strong>Representative prediction in a subsonic configuration.</strong>
+        CFD reference, neural-field prediction, and absolute error.
+      </p>
+    </div>
+
+    <!-- PLACEHOLDER:
+         Insert Figure 5 from the paper:
+         Pressure coefficient and friction-field prediction for
+         M∞ = 0.96, AoA = -2°, p_i = 2.0 × 10^5 Pa.
+    -->
+
+    <div class="content has-text-centered">
+      <p>
+        <strong>Representative prediction in a transonic configuration.</strong>
+        CFD reference, neural-field prediction, and absolute error.
+      </p>
+    </div>
+
+    <div class="content">
+      <p>
+        The transonic example illustrates that the neural field can reproduce
+        localized structures such as shock waves while maintaining accurate
+        predictions over the remainder of the aircraft surface.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- =========================
+     Main Takeaways
+     ========================= -->
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Key Takeaways</h2>
+
+    <div class="content">
+      <ul>
+        <li>
+          <strong>Coordinate-based modeling</strong> provides a natural
+          mesh-independent representation for irregular aerodynamic surfaces.
+        </li>
+
+        <li>
+          <strong>Fourier feature encoding</strong> substantially improves the
+          representation of localized and high-frequency flow structures.
+        </li>
+
+        <li>
+          <strong>Metric-aligned training</strong> is important when the
+          evaluation criterion strongly penalizes worst-case configurations.
+        </li>
+
+        <li>
+          <strong>Ensembling</strong> improves robustness by reducing the
+          influence of individual model failures.
+        </li>
+
+        <li>
+          <strong>K-fold cross-validation</strong> allows all available CFD
+          simulations to contribute to training while providing a diverse set
+          of models for the final ensemble.
+        </li>
+
+        <li>
+          A carefully designed combination of established techniques can
+          outperform a much larger global regression model without requiring a
+          fundamentally new neural architecture.
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- =========================
+     Data & Reproducibility
+     ========================= -->
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Data &amp; Reproducibility</h2>
+
+    <div class="content">
+      <p>
+        The CRM-WBPN database used in the challenge has been publicly released
+        following the competition. The dataset provides the CFD-derived
+        aerodynamic wall quantities used to develop and evaluate surrogate
+        models.
+      </p>
+
+      <div class="buttons">
+        <a class="button is-dark"
+           href="https://entrepot.recherche.data.gouv.fr/dataset.xhtml?persistentId=doi:10.57745/K1UK6Z"
+           target="_blank">
+          <span class="icon">
+            <i class="fas fa-database"></i>
+          </span>
+          <span>CRM-WBPN Dataset</span>
+        </a>
+
+        <a class="button is-link"
+           href="https://www.codabench.org/competitions/7535/"
+           target="_blank">
+          <span class="icon">
+            <i class="fas fa-trophy"></i>
+          </span>
+          <span>Challenge</span>
+        </a>
+
+        <a class="button is-danger"
+           href="https://arxiv.org/abs/2609.17160"
+           target="_blank">
+          <span class="icon">
+            <i class="fas fa-file-pdf"></i>
+          </span>
+          <span>Paper</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 <!--BibTex citation -->
   <section class="section" id="BibTeX">
@@ -141,13 +612,14 @@
           <span class="copy-text">Copy</span>
         </button>
       </div>
-      <pre id="bibtex-code"><code>@misc{salesses2026neuralfieldensemblesaerodynamic,
+      <pre id="bibtex-code"><code>@article{salesses2026neuralfieldensemblesaerodynamic,
       title={Neural Field Ensembles for Aerodynamic Surface Prediction: Winning Solution to the ONERA CRM Wall Distribution 2025 Challenge}, 
       author={Lionel Salesses and Caroline Sainvitu and Tariq Benamara},
       year={2026},
       eprint={2609.17160},
       archivePrefix={arXiv},
       primaryClass={cs.LG},
+      journal={arXiv preprint arXiv:2609.17160},
       url={https://arxiv.org/abs/2609.17160}, 
 }</code></pre>
     </div>
