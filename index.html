@@ -290,25 +290,14 @@
 
     <!-- PLACEHOLDER: Qualitative prediction figure from the paper -->
     <figure class="image has-text-centered">
-      <img src="static/images/predictions.png"
-           alt="CFD reference, neural-field prediction, and absolute error"
-           style="width: 100%; margin: 2rem auto 0;">
-      <figcaption class="has-text-centered">
-        Representative aerodynamic field predictions. CFD reference,
-        neural-field prediction, and absolute error.
-      </figcaption>
-    </figure>
-
-    <div class="columns is-multiline is-centered">
+      <div class="columns is-multiline is-centered">
       <div class="column is-half">
-          <h4 class="title is-6 is-centered">Pressure</h4>
           <div class="juxtapose" data-startingposition="50%" style="width: 90%;">
               <img src="static/images/figscatter_Minf_0.85_AoA_1.5_Pi_1.0_cp.png" data-label="Pressure reference" alt="Pressure reference"/>
               <img src="static/images/figscatter_Minf_0.85_AoA_1.5_Pi_1.0_cphat.png" data-label="Pressure prediction" alt="Pressure prediction"/>
           </div>
       </div>
       <div class="column is-half">
-        <h4 class="title is-6 is-centered">Skin friction</h4>
         <div class="juxtapose" data-startingposition="50%" style="width: 90%;">
             <img src="static/images/figscatter_Minf_0.85_AoA_1.5_Pi_1.0_cf.png" data-label="Friction reference" alt="Friction reference"/>
             <img src="static/images/figscatter_Minf_0.85_AoA_1.5_Pi_1.0_cfhat.png" data-label="Friction prediction" alt="Friction prediction"/>
@@ -327,6 +316,13 @@
         </div>
       </div>
     </div>
+      <figcaption class="has-text-centered">
+        Representative aerodynamic field predictions. CFD reference,
+        neural-field prediction, and absolute error.
+      </figcaption>
+    </figure>
+
+    
       
   </div>
 </section>
