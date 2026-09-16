@@ -167,7 +167,7 @@
     <figure class="image has-text-centered">
       <img src="static/images/crm_geometry-opt.png"
            alt="CRM-WBPN configuration"
-           style="width: 80%; margin: 0 auto;">
+           style="width: 60%; margin: 0 auto;">
     </figure>
   </div>
 </section>
@@ -187,20 +187,58 @@
         (Mach number, angle of attack, and stagnation pressure).
       </p>
 
+      <div class="content">
+      <h3 class="title is-5">Mesh-independent representation</h3>
+
       <p>
-        Fourier feature encoding is applied to the spatial coordinates to
-        improve the representation of localized flow structures. The final
-        solution combines relative squared error training, ensemble learning,
-        and five-fold cross-validation.
+        Because the CFD mesh is unavailable, the model operates directly on
+        the point-wise representation of the aircraft surface. No mesh
+        connectivity or manually constructed surface parameterization is
+        required.
       </p>
+
+      <h3 class="title is-5">Fourier feature encoding</h3>
+
+      <p>
+        Standard MLPs tend to learn low-frequency components preferentially.
+        To improve the representation of localized flow structures, the
+        Cartesian coordinates are transformed using Fourier feature encoding
+        before being provided to the neural network.
+      </p>
+
+      <h3 class="title is-5">Metric-aligned training</h3>
+
+      <p>
+        The challenge score combines global accuracy with a worst-case relative
+        error. We therefore replace the conventional mean squared error with a
+        relative squared error objective, encouraging the model to reduce
+        relative prediction errors across the different flow configurations.
+      </p>
+
+      <h3 class="title is-5">Ensemble learning</h3>
+
+      <p>
+        Multiple neural fields are trained independently and their predictions
+        are averaged. This reduces the variance associated with individual
+        models and improves robustness, particularly for difficult
+        configurations.
+      </p>
+
+      <h3 class="title is-5">K-fold cross-validation</h3>
+
+      <p>
+        Finally, the available 312 simulations are partitioned into five folds.
+        Models trained on the different folds are combined into the final
+        ensemble, allowing every available simulation to contribute to model
+        training while increasing ensemble diversity.
+      </p>
+    </div>
     </div>
   </div>
 </section>
 
 
-<!-- =========================
-     Progressive Development
-     ========================= -->
+<!-- ========================= Progressive Development -->
 
 <section class="section">
   <div class="container is-max-desktop">
@@ -222,14 +260,123 @@
            alt="Progressive development and ablation results"
            style="width: 90%; margin: 0 auto;">
     </figure>
+  
+    <table>
+  <caption>Progressive improvement of the solution throughout the development process.</caption>
+  <thead>
+    <tr>
+      <th></th>
+      <th style="writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap;">Initial neural field prototype</th>
+      <th style="writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap;">+ Fourier Features Encoding (FFE)</th>
+      <th style="writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap;">+ Increased model capacity</th>
+      <th style="writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap;">+ Relative squared error loss</th>
+      <th style="writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap;">+ Ensemble learning</th>
+      <th style="writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap;">+ K-fold cross-validation ensemble</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Score ↑</th>
+      <td>7.80</td>
+      <td>8.34</td>
+      <td>8.45</td>
+      <td>8.58</td>
+      <td>8.65</td>
+      <td><strong>8.81</strong></td>
+    </tr>
+    <tr>
+      <th>R² ↑</th>
+      <td>0.908</td>
+      <td>0.943</td>
+      <td>0.965</td>
+      <td>0.967</td>
+      <td>0.970</td>
+      <td><strong>0.973</strong></td>
+    </tr>
+    <tr>
+      <th>R²<sub>C<sub>p</sub></sub></th>
+      <td>0.964</td>
+      <td>0.978</td>
+      <td>0.979</td>
+      <td>0.980</td>
+      <td>0.982</td>
+      <td>0.983</td>
+    </tr>
+    <tr>
+      <th>R²<sub>Cf<sub>x</sub></sub></th>
+      <td>0.891</td>
+      <td>0.922</td>
+      <td>0.956</td>
+      <td>0.958</td>
+      <td>0.962</td>
+      <td>0.966</td>
+    </tr>
+    <tr>
+      <th>R²<sub>Cf<sub>y</sub></sub></th>
+      <td>0.890</td>
+      <td>0.931</td>
+      <td>0.960</td>
+      <td>0.963</td>
+      <td>0.966</td>
+      <td>0.969</td>
+    </tr>
+    <tr>
+      <th>R²<sub>Cf<sub>z</sub></sub></th>
+      <td>0.888</td>
+      <td>0.942</td>
+      <td>0.966</td>
+      <td>0.968</td>
+      <td>0.971</td>
+      <td>0.973</td>
+    </tr>
+    <tr>
+      <th>wrMAE ↓</th>
+      <td>0.349</td>
+      <td>0.276</td>
+      <td>0.276</td>
+      <td>0.251</td>
+      <td>0.241</td>
+      <td><strong>0.210</strong></td>
+    </tr>
+    <tr>
+      <th>wrMAE<sub>C<sub>p</sub></sub></th>
+      <td>0.286</td>
+      <td>0.200</td>
+      <td>0.171</td>
+      <td>0.162</td>
+      <td>0.160</td>
+      <td>0.157</td>
+    </tr>
+    <tr>
+      <th>wrMAE<sub>Cf<sub>x</sub></sub></th>
+      <td>0.236</td>
+      <td>0.194</td>
+      <td>0.179</td>
+      <td>0.179</td>
+      <td>0.173</td>
+      <td>0.170</td>
+    </tr>
+    <tr>
+      <th>wrMAE<sub>Cf<sub>y</sub></sub></th>
+      <td>0.436</td>
+      <td>0.393</td>
+      <td>0.471</td>
+      <td>0.409</td>
+      <td>0.398</td>
+      <td>0.315</td>
+    </tr>
+    <tr>
+      <th>wrMAE<sub>Cf<sub>z</sub></sub></th>
+      <td>0.439</td>
+      <td>0.317</td>
+      <td>0.282</td>
+      <td>0.253</td>
+      <td>0.233</td>
+      <td>0.197</td>
+    </tr>
+  </tbody>
+</table>
 
-    <div class="content">
-      <p>
-        These successive modifications increased the validation score from
-        <strong>7.80</strong> for the initial neural field to
-        <strong>8.81</strong> on the final hidden test set.
-      </p>
-    </div>
   </div>
 </section>
 
