@@ -167,76 +167,13 @@
 
     <!-- Task banner -->
     <div class="box" style="
-  padding: 0;
-  margin-bottom: 1.5rem;
-  border-radius: 18px;
-  overflow: hidden;
-  border: none;
-  box-shadow: none;
-  background: #ffffff;
-">
-  <div style="
-    display: flex;
-    align-items: center;
-    width: 100%;
-    min-height: 120px;
-    gap: 10%;
-    padding: 1.5rem;
-    box-sizing: border-box;
-  ">
-    <div style="
-      flex: 0 0 10%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-    ">
-      <div style="
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0.55rem 1rem;
-        border-radius: 999px;
-        background: #0b2d5b;
-        color: white;
-        font-weight: 700;
-        letter-spacing: 0.02em;
-        font-size: 1.75rem;
-        white-space: nowrap;
-      ">
-        Task
-      </div>
-    </div>
-
-    <div style="
-      flex: 0 0 auto;
-      width: 2px;
-      height: 66px;
-      background: #0b2d5b;
-      border-radius: 999px;
-    "></div>
-
-    <div style="flex: 1 1 auto;">
-      <p class="content is-medium" style="
-        font-size: 1.12rem;
-        line-height: 1.75;
-        margin: 0;
-        color: #1f2a37;
-      ">
-        Predict the <strong>aerodynamic surface fields</strong> (pressure and skin-friction) on the complex NASA <strong>CRM Wing-Body-Pylon-Nacelle</strong>
-        (CRM-WBPN) configuration <strong>from geometry and flow conditions</strong>, without access to CFD mesh connectivity.
-      </p>
-    </div>
-  </div>
-</div>
-    <div class="box" style="
       padding: 0;
       margin-bottom: 1.5rem;
       border-radius: 18px;
       overflow: hidden;
-      border: 1px solid rgba(10, 10, 10, 0.06);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-      background: linear-gradient(135deg, #f8fbff 0%, #ffffff 55%, #f4f8ff 100%);
+      border: none;
+      box-shadow: none;
+      background: #ffffff;
     ">
       <div style="
         display: flex;
@@ -275,7 +212,7 @@
           flex: 0 0 auto;
           width: 2px;
           height: 66px;
-          background: linear-gradient(to bottom, rgba(11,45,91,0.15), rgba(11,45,91,0.45), rgba(11,45,91,0.15));
+          background: #0b2d5b;
           border-radius: 999px;
         "></div>
     
@@ -286,13 +223,12 @@
             margin: 0;
             color: #1f2a37;
           ">
-              Predict the <strong>aerodynamic surface fields</strong> (pressure and skin-friction) on the complex NASA <strong>CRM Wing-Body-Pylon-Nacelle</strong>strong>
-              (CRM-WBPN) configuration <strong>from geometry and flow conditions</strong>, without access to CFD mesh connectivity.
+            Predict the <strong>aerodynamic surface fields</strong> (pressure and skin-friction) on the complex NASA <strong>CRM Wing-Body-Pylon-Nacelle</strong>
+            (CRM-WBPN) configuration <strong>from geometry and flow conditions</strong>, without access to CFD mesh connectivity.
           </p>
         </div>
       </div>
     </div>
-
 
     <!-- Cards -->
     <div class="columns is-variable is-5">
@@ -402,14 +338,14 @@
         <div style="flex: 1 1 280px; min-width: 260px; padding: 1rem 1.25rem; border-top: 3px solid #0b2d5b; background: #f8fbff;">
           <p class="title is-6 mb-2" style="color: #0b2d5b;">Mesh-independent representation</p>
           <p class="content mb-0">
-            Learns directly from surface samples, without requiring CFD mesh connectivity.
+            Learns directly from surface point-wise representation, without requiring CFD mesh connectivity.
           </p>
         </div>
 
         <div style="flex: 1 1 280px; min-width: 260px; padding: 1rem 1.25rem; border-top: 3px solid #0b2d5b; background: #f8fbff;">
           <p class="title is-6 mb-2" style="color: #0b2d5b;">Fourier feature encoding</p>
           <p class="content mb-0">
-            Maps inputs into a richer frequency space to better capture geometric variation.
+            Maps input coordinates into a richer frequency space to better capture geometric variation.
           </p>
         </div>
 
@@ -430,7 +366,7 @@
         <div style="flex: 1 1 280px; min-width: 260px; padding: 1rem 1.25rem; border-top: 3px solid #0b2d5b; background: #f8fbff;">
           <p class="title is-6 mb-2" style="color: #0b2d5b;">K-fold cross-validation</p>
           <p class="content mb-0">
-            Provides a reliable estimate of generalization across the available CFD cases.
+            All simulations are used across different folds for training, increasing diversity.
           </p>
         </div>
 
