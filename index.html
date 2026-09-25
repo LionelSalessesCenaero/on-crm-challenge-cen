@@ -157,14 +157,6 @@
   </div>
 </section>
 
-<div class="content has-text-centered">
-  <figure class="image">
-    <img src="static/images/Full-arch-opt.png"
-         alt="Methodology overview"
-         style="width: 65%; margin: 0 auto;">
-  </figure>
-</div>
-
 <!-- ========================= Challenge -->
 
 <section class="section" id="challenge">
@@ -320,7 +312,7 @@
     </div>
 
   </div>
-</div>
+  </div>
 </section>
     
 
@@ -328,12 +320,20 @@
 
 <section class="section">
   <div class="container is-max-desktop">
-    <h2 class="title is-3">Proposed Methodology</h2>
-
+    <div class="has-text-centered" style="margin-bottom: 2rem;">
+      <h2 class="title is-3">The Challenge</h2>
+    </div>
+    <div class="content has-text-centered">
+      <figure class="image">
+        <img src="static/images/Full-arch-opt.png"
+             alt="Methodology overview"
+             style="width: 65%; margin: 0 auto;">
+      </figure>
+    </div>
+    
     <div class="content">
       <p>
-        We formulate the problem as a conditional neural field. A fully
-        connected neural network predicts the four aerodynamic quantities from
+        A conditional neural field predicts the four aerodynamic quantities from
         the surface coordinates, normal vector, and operating conditions
         (Mach number, angle of attack, and stagnation pressure).
       </p>
@@ -416,35 +416,9 @@
 
 
 <!-- ========================= Results ========================= -->
-
 <section class="section">
   <div class="container is-max-desktop">
     <h2 class="title is-3">Results</h2>
-
-    <div class="content">
-      <p>
-        The final ensemble achieved a score of <strong>8.81</strong> on the
-        hidden competition test set, compared with <strong>8.64</strong> for
-        the strongest organizer-provided baseline, the Global MLP.
-        The neural-field solution uses approximately three orders of magnitude
-        fewer trainable parameters.
-      </p>
-    </div>
-
-    <figure class="image has-text-centered">
-      <img src="static/images/results_opt.png"
-           alt="Comparison with organizer-provided baselines"
-           style="width: 50%; margin: 0 auto;">
-      <figcaption class="has-text-centered">
-        Comparison with organizer-provided baselines
-      </figcaption>
-    </figure>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container is-max-desktop">
-    <h2 class="title is-3">Qualitative Results</h2>
     <figure class="image-grid has-text-centered">
       <div class="columns is-multiline is-centered">
       <div class="column is-half">
