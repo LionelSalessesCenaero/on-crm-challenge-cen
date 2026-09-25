@@ -178,83 +178,83 @@
 
     <!-- Task banner -->
     <div class="box" style="
-  padding: 0;
-  margin-bottom: 1.5rem;
-  border-radius: 18px;
-  overflow: hidden;
-  border: 1px solid rgba(10, 10, 10, 0.06);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  background: linear-gradient(135deg, #f8fbff 0%, #ffffff 55%, #f4f8ff 100%);
-">
-  <div style="
-    display: flex;
-    align-items: center;
-    width: 100%;
-    min-height: 120px;
-    gap: 10%;
-    padding: 1.5rem;
-    box-sizing: border-box;
-  ">
-    <div style="
-      flex: 0 0 10%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
+      padding: 0;
+      margin-bottom: 1.5rem;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(10, 10, 10, 0.06);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      background: linear-gradient(135deg, #f8fbff 0%, #ffffff 55%, #f4f8ff 100%);
     ">
       <div style="
-        display: inline-flex;
+        display: flex;
         align-items: center;
-        justify-content: center;
-        padding: 0.55rem 1rem;
-        border-radius: 999px;
-        background: #0b2d5b;
-        color: white;
-        font-weight: 700;
-        letter-spacing: 0.02em;
-        font-size: 1rem;
-        white-space: nowrap;
+        width: 100%;
+        min-height: 120px;
+        gap: 10%;
+        padding: 1.5rem;
+        box-sizing: border-box;
       ">
-        Task
+        <div style="
+          flex: 0 0 10%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+        ">
+          <div style="
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.55rem 1rem;
+            border-radius: 999px;
+            background: #0b2d5b;
+            color: white;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            font-size: 1rem;
+            white-space: nowrap;
+          ">
+            Task
+          </div>
+        </div>
+    
+        <div style="
+          flex: 0 0 auto;
+          width: 2px;
+          height: 66px;
+          background: linear-gradient(to bottom, rgba(11,45,91,0.15), rgba(11,45,91,0.45), rgba(11,45,91,0.15));
+          border-radius: 999px;
+        "></div>
+    
+        <div style="flex: 1 1 auto;">
+          <p class="content is-medium" style="
+            font-size: 1.12rem;
+            line-height: 1.75;
+            margin: 0;
+            color: #1f2a37;
+          ">
+            <strong>
+              Predict the aerodynamic surface fields of the complex NASA CRM Wing-Body-Pylon-Nacelle
+              (CRM-WBPN) configuration from geometry and flow conditions, without access to CFD mesh connectivity.
+            </strong>
+          </p>
+        </div>
       </div>
     </div>
-
-    <div style="
-      flex: 0 0 auto;
-      width: 2px;
-      height: 66px;
-      background: linear-gradient(to bottom, rgba(11,45,91,0.15), rgba(11,45,91,0.45), rgba(11,45,91,0.15));
-      border-radius: 999px;
-    "></div>
-
-    <div style="flex: 1 1 auto;">
-      <p class="content is-medium" style="
-        font-size: 1.12rem;
-        line-height: 1.75;
-        margin: 0;
-        color: #1f2a37;
-      ">
-        <strong>
-          Predict the aerodynamic surface fields of the complex NASA CRM Wing-Body-Pylon-Nacelle
-          (CRM-WBPN) configuration from geometry and flow conditions, without access to CFD mesh connectivity.
-        </strong>
-      </p>
-    </div>
-  </div>
-</div>
 
 
     <!-- Cards -->
     <div class="columns is-variable is-5">
       <div class="column">
         <div class="box has-text-centered" style="height: 100%;">
-          <div class="column is-5">
-            <figure class="image has-text-centered">
-              <img src="static/images/crm_geometry-opt.png"
-                 alt="CRM-WBPN configuration"
-                 style="width: 60%; margin: 0 auto;">
-            </figure>
-          </div>
+          <figure class="image" style="width: 80%; margin: 0 auto 1rem auto;">
+            <img
+              src="static/images/crm_geometry-opt.png"
+              alt="CRM-WBPN configuration"
+              style="width: 100%; display: block;"
+            >
+          </figure>
           <p class="title is-4" style="margin-bottom: 0.25rem;">Complex 3D Geometry</p>
           <p class="content">
             Wing-body-pylon-nacelle aircraft configuration.
@@ -264,13 +264,13 @@
 
       <div class="column">
         <div class="box has-text-centered" style="height: 100%;">
-          <div class="column is-5">
-            <figure class="image has-text-centered">
-              <img src="static/images/crm_geometry-opt.png"
-                 alt="CRM-WBPN configuration"
-                 style="width: 60%; margin: 0 auto;">
-            </figure>
-          </div>
+          <figure class="image" style="width: 80%; margin: 0 auto 1rem auto;">
+            <img
+              src="static/images/crm_geometry-opt.png"
+              alt="CRM-WBPN configuration"
+              style="width: 100%; display: block;"
+            >
+          </figure>
           <p class="title is-4" style="margin-bottom: 0.25rem;">Complex Flow</p>
           <p class="content">
             Multiple aerodynamic regimes, localized flow phenomena (shocks, separation)
