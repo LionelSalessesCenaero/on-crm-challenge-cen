@@ -177,25 +177,59 @@
     </div>
 
     <!-- Task banner -->
-    <div class="box" style="padding: 1.5rem 1.75rem; margin-bottom: 1.5rem; border-radius: 14px; overflow: hidden;">
-  <div class="columns is-vcentered is-gapless" style="min-height: 110px;">
-    <div class="column is-narrow" style="padding-right: 1.5rem; padding-left: 0.5rem;">
-      <p class="title is-4" style="margin: 0; color: #0b2d5b;">
+    <div class="box" style="
+  padding: 0;
+  margin-bottom: 1.5rem;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(10, 10, 10, 0.06);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  background: linear-gradient(135deg, #f8fbff 0%, #ffffff 55%, #f4f8ff 100%);
+">
+  <div class="columns is-vcentered is-gapless" style="min-height: 120px;">
+
+    <div class="column is-narrow" style="padding: 1.5rem 1.25rem 1.5rem 1.5rem;">
+      <div style="
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.55rem 1rem;
+        border-radius: 999px;
+        background: #0b2d5b;
+        color: white;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        font-size: 1rem;
+        white-space: nowrap;
+      ">
         Task
-      </p>
+      </div>
     </div>
 
-    <div class="column is-narrow" style="padding: 0 1.5rem;">
-      <div style="width: 2px; height: 70px; background: #dbdbdb; margin: 0 auto;"></div>
+    <div class="column is-narrow" style="padding: 1.25rem 0;">
+      <div style="
+        width: 2px;
+        height: 66px;
+        background: linear-gradient(to bottom, rgba(11,45,91,0.15), rgba(11,45,91,0.45), rgba(11,45,91,0.15));
+        border-radius: 999px;
+        margin: 0 auto;
+      "></div>
     </div>
 
-    <div class="column" style="padding-left: 1.5rem; padding-right: 0.75rem;">
-      <p class="content is-medium" style="font-size: 1.15rem; line-height: 1.7; margin: 0;">
+    <div class="column" style="padding: 1.5rem 1.75rem 1.5rem 1.25rem;">
+      <p class="content is-medium" style="
+        font-size: 1.12rem;
+        line-height: 1.75;
+        margin: 0;
+        color: #1f2a37;
+      ">
         <strong>
-          Predict the aerodynamic surface fields on the complex NASA CRM Wing-Body-Pylon-Nacelle (CRM-WBPN) configuration from geometry and flow conditions.
+          Predict the aerodynamic surface fields of the complex NASA CRM Wing-Body-Pylon-Nacelle
+          (CRM-WBPN) configuration from geometry and flow conditions, without access to CFD mesh connectivity.
         </strong>
       </p>
     </div>
+
   </div>
 </div>
 
