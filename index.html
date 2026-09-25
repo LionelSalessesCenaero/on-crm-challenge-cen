@@ -186,9 +186,16 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
   background: linear-gradient(135deg, #f8fbff 0%, #ffffff 55%, #f4f8ff 100%);
 ">
-  <div class="columns is-vcentered is-gapless" style="min-height: 120px;">
-
-    <div class="column is-narrow" style="padding: 1.5rem 1.25rem 1.5rem 1.5rem;">
+  <div style="
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-height: 120px;
+    gap: 10%;
+    padding: 1.5rem;
+    box-sizing: border-box;
+  ">
+    <div style="flex: 0 0 auto;">
       <div style="
         display: inline-flex;
         align-items: center;
@@ -206,17 +213,15 @@
       </div>
     </div>
 
-    <div class="column is-narrow" style="padding: 1.25rem 0;">
-      <div style="
-        width: 2px;
-        height: 66px;
-        background: linear-gradient(to bottom, rgba(11,45,91,0.15), rgba(11,45,91,0.45), rgba(11,45,91,0.15));
-        border-radius: 999px;
-        margin: 0 auto;
-      "></div>
-    </div>
+    <div style="
+      flex: 0 0 auto;
+      width: 2px;
+      height: 66px;
+      background: linear-gradient(to bottom, rgba(11,45,91,0.15), rgba(11,45,91,0.45), rgba(11,45,91,0.15));
+      border-radius: 999px;
+    "></div>
 
-    <div class="column" style="padding: 1.5rem 1.75rem 1.5rem 1.25rem;">
+    <div style="flex: 1 1 auto;">
       <p class="content is-medium" style="
         font-size: 1.12rem;
         line-height: 1.75;
@@ -229,7 +234,6 @@
         </strong>
       </p>
     </div>
-
   </div>
 </div>
 
