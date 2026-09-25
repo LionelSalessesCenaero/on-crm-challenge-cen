@@ -110,7 +110,6 @@
   </div>
 </section>
 
-    
 <section class="section hero is-light">
   <div class="container is-max-desktop">
     <div class="content has-text-centered">
@@ -174,55 +173,65 @@
   <div class="container">
     <div class="has-text-centered" style="margin-bottom: 2rem;">
       <h2 class="title is-3">The Challenge</h2>
-      <p class="subtitle is-6">
+      <!--<p class="subtitle is-6">
         Learning aerodynamic surface fields on a complex aircraft geometry
-      </p>
+      </p>-->
     </div>
 
     <!-- Banner -->
     <div class="box" style="padding: 1.25rem; margin-bottom: 1.5rem; border-radius: 14px; overflow: hidden;">
       <div class="columns is-vcentered is-variable is-5">
         <div class="column is-7">
-          <p class="title is-5" style="margin-bottom: 0.75rem;">Task</p>
+          <p class="title is-6 has-text-centered" style="margin-bottom: 0.75rem;"><strong>Task</strong></p>
           <p class="content is-medium" style="font-size: 1.15rem; line-height: 1.7;">
             <strong>
-              Predict the aerodynamic surface fields of the complex NASA CRM Wing-Body-Pylon-Nacelle
-              (CRM-WBPN) configuration from geometry and flow conditions, without access to CFD mesh connectivity.
+              Predict the aerodynamic surface fields on the complex NASA CRM Wing-Body-Pylon-Nacelle
+              (CRM-WBPN) configuration from geometry and flow conditions.
             </strong>
           </p>
-
-          <div class="tags are-medium" style="margin-top: 1rem;">
-            <span class="tag is-link is-light">Geometry only</span>
-            <span class="tag is-link is-light">Flow conditions</span>
-            <span class="tag is-link is-light">No mesh connectivity</span>
-          </div>
-        </div>
-
-        <div class="column is-5">
-          <figure class="image is-4by3">
-            <img
-              src="static/images/crm_wbpn_config.png"
-              alt="CRM-WBPN configuration"
-              style="object-fit: cover; border-radius: 12px;"
-            >
-          </figure>
         </div>
       </div>
     </div>
 
-    <!-- Three cards -->
+    <!-- Cards -->
     <div class="columns is-variable is-5">
       <div class="column">
         <div class="box has-text-centered" style="height: 100%;">
-          <div class="icon is-large" style="margin-bottom: 0.5rem;">
-            <i class="fas fa-cube fa-2x"></i>
+          <div class="column is-5">
+            <figure class="image has-text-centered">
+              <img src="static/images/crm_geometry-opt.png"
+                 alt="CRM-WBPN configuration"
+                 style="width: 60%; margin: 0 auto;">
+            </figure>
           </div>
-          <p class="title is-4" style="margin-bottom: 0.25rem;">Complex Geometry</p>
+          <p class="title is-4" style="margin-bottom: 0.25rem;">Complex 3D Geometry</p>
           <p class="content">
-            Wing-body-pylon-nacelle aircraft configuration with challenging flow interactions.
+            Wing-body-pylon-nacelle aircraft configuration.
           </p>
         </div>
       </div>
+
+      <div class="column">
+        <div class="box has-text-centered" style="height: 100%;">
+          <div class="column is-5">
+            <figure class="image has-text-centered">
+              <img src="static/images/crm_geometry-opt.png"
+                 alt="CRM-WBPN configuration"
+                 style="width: 60%; margin: 0 auto;">
+            </figure>
+          </div>
+          <p class="title is-4" style="margin-bottom: 0.25rem;">Complex Flow</p>
+          <p class="content">
+            Multiple aerodynamic regimes, localized flow phenomena (shocks, separation)
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-multiline is-centered">
 
       <div class="column">
         <div class="box has-text-centered" style="height: 100%;">
@@ -231,7 +240,7 @@
           </div>
           <p class="title is-4" style="margin-bottom: 0.25rem;">Surface Fields</p>
           <p class="content">
-            Predict pressure and skin-friction-related quantities directly on the surface.
+            Predict pressure and skin-friction fields on the aircraft surface.
           </p>
         </div>
       </div>
@@ -243,37 +252,11 @@
           </div>
           <p class="title is-4" style="margin-bottom: 0.25rem;">Mesh-Free Input</p>
           <p class="content">
-            Use geometry and flow conditions only — no CFD mesh connectivity is available.
+            Use geometry and flow conditions only, no CFD mesh connectivity is available.
           </p>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-<section class="section">
-  <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered">The Challenge</h2>
-    <div class="content has-text-centered">
-      <p>
-        Predict the aerodynamic surface fields of the complex
-        NASA CRM Wing-Body-Pylon-Nacelle (CRM-WBPN) configuration from geometry and
-        flow conditions, without access to CFD mesh connectivity.
-      </p>
-    </div>
-
-    <div class="notification is-link is-light" style="border-left: 6px solid #3273dc;">
-      <p class="title is-5 has-text-centered" style="margin-bottom: 0.5rem;">
-        Task
-      </p>
-      <p class="content is-medium" style="font-size: 1.15rem; line-height: 1.6;">
-        <strong>Predict the aerodynamic surface fields of the complex
-        NASA CRM Wing-Body-Pylon-Nacelle (CRM-WBPN) configuration from geometry and
-        flow conditions, without access to CFD mesh connectivity.</strong>
-      </p>
-    </div>
-
-    <div class="columns is-multiline is-centered">
-
+      
       <!-- Predicted quantities -->
       <div class="column is-6-mobile is-3-desktop">
         <div class="box has-text-centered">
