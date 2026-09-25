@@ -320,17 +320,74 @@
     
 
 <!-- ========================= Method -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered mb-4">Proposed Methodology</h2>
 
+    <p class="has-text-centered is-size-5 mb-5" style="max-width: 900px; margin-left: auto; margin-right: auto;">
+      A conditional neural field predicts the four aerodynamic quantities from the surface coordinates, normal vector, and operating conditions (Mach number, angle of attack, and stagnation pressure).
+    </p>
+
+    <div class="content has-text-centered mb-6">
+      <figure class="image">
+        <img src="static/images/Full-arch-opt.png"
+             alt="Methodology overview"
+             style="width: 65%; margin: 0 auto;">
+      </figure>
+    </div>
+
+    <div style="max-width: 980px; margin: 0 auto;">
+      <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center;">
+        
+        <div style="flex: 1 1 280px; min-width: 260px; padding: 1rem 1.25rem; border-top: 3px solid #0b2d5b; background: #f8fbff;">
+          <p class="title is-6 mb-2" style="color: #0b2d5b;">Mesh-independent representation</p>
+          <p class="content mb-0">
+            Learns directly from surface samples, without requiring CFD mesh connectivity.
+          </p>
+        </div>
+
+        <div style="flex: 1 1 280px; min-width: 260px; padding: 1rem 1.25rem; border-top: 3px solid #0b2d5b; background: #f8fbff;">
+          <p class="title is-6 mb-2" style="color: #0b2d5b;">Fourier feature encoding</p>
+          <p class="content mb-0">
+            Maps inputs into a richer frequency space to better capture geometric variation.
+          </p>
+        </div>
+
+        <div style="flex: 1 1 280px; min-width: 260px; padding: 1rem 1.25rem; border-top: 3px solid #0b2d5b; background: #f8fbff;">
+          <p class="title is-6 mb-2" style="color: #0b2d5b;">Metric-aligned training</p>
+          <p class="content mb-0">
+            Optimized to match the evaluation criteria used for aerodynamic performance.
+          </p>
+        </div>
+
+        <div style="flex: 1 1 280px; min-width: 260px; padding: 1rem 1.25rem; border-top: 3px solid #0b2d5b; background: #f8fbff;">
+          <p class="title is-6 mb-2" style="color: #0b2d5b;">Ensemble learning</p>
+          <p class="content mb-0">
+            Combines multiple predictors to improve robustness and reduce variance.
+          </p>
+        </div>
+
+        <div style="flex: 1 1 280px; min-width: 260px; padding: 1rem 1.25rem; border-top: 3px solid #0b2d5b; background: #f8fbff;">
+          <p class="title is-6 mb-2" style="color: #0b2d5b;">K-fold cross-validation</p>
+          <p class="content mb-0">
+            Provides a reliable estimate of generalization across the available CFD cases.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
 <section class="section">
   <div class="container is-max-desktop">
     <div class="has-text-centered" style="margin-bottom: 2rem;">
-      <h2 class="title is-3">The Challenge</h2>
+      <h2 class="title is-3">Proposed Methodology</h2>
     </div>
     <div class="content has-text-centered">
       <figure class="image">
         <img src="static/images/Full-arch-opt.png"
              alt="Methodology overview"
-             style="width: 65%; margin: 0 auto;">
+             style="width: 85%; margin: 0 auto;">
       </figure>
     </div>
     
