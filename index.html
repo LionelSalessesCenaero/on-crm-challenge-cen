@@ -212,7 +212,7 @@
             color: white;
             font-weight: 700;
             letter-spacing: 0.02em;
-            font-size: 2rem;
+            font-size: 1.75rem;
             white-space: nowrap;
           ">
             Task
@@ -234,7 +234,7 @@
             margin: 0;
             color: #1f2a37;
           ">
-              Predict the <strong>aerodynamic surface fields</strong> on the complex NASA <strong>CRM Wing-Body-Pylon-Nacelle</strong>strong>
+              Predict the <strong>aerodynamic surface fields</strong> (pressure and skin-friction) on the complex NASA <strong>CRM Wing-Body-Pylon-Nacelle</strong>strong>
               (CRM-WBPN) configuration <strong>from geometry and flow conditions</strong>strong>, without access to CFD mesh connectivity.
           </p>
         </div>
@@ -278,47 +278,11 @@
     </div>
   </div>
 </section>
+    
 <section class="section">
   <div class="container is-max-desktop">
     <div class="columns is-multiline is-centered">
-
-      <div class="column">
-        <div class="box has-text-centered" style="height: 100%;">
-          <div class="icon is-large" style="margin-bottom: 0.5rem;">
-            <i class="fas fa-wave-square fa-2x"></i>
-          </div>
-          <p class="title is-4" style="margin-bottom: 0.25rem;">Surface Fields</p>
-          <p class="content">
-            Predict pressure and skin-friction fields on the aircraft surface.
-          </p>
-        </div>
-      </div>
-
-      <div class="column">
-        <div class="box has-text-centered" style="height: 100%;">
-          <div class="icon is-large" style="margin-bottom: 0.5rem;">
-            <i class="fas fa-project-diagram fa-2x"></i>
-          </div>
-          <p class="title is-4" style="margin-bottom: 0.25rem;">Mesh-Free Input</p>
-          <p class="content">
-            Use geometry and flow conditions only, no CFD mesh connectivity is available.
-          </p>
-        </div>
-      </div>
       
-      <!-- Predicted quantities -->
-      <div class="column is-6-mobile is-3-desktop">
-        <div class="box has-text-centered">
-          <span class="icon is-large mb-3">
-            <i class="fas fa-chart-line fa-2x"></i>
-          </span>
-          <p class="title is-3 mb-1">4</p>
-          <p class="subtitle is-6 mb-0">aerodynamic quantities</p>
-        </div>
-      </div>
-      
-
-      <!-- CFD simulations -->
       <div class="column is-6-mobile is-3-desktop">
         <div class="box has-text-centered">
           <span class="icon is-large mb-3">
@@ -329,67 +293,32 @@
         </div>
       </div>
 
+      <div class="column is-6-mobile is-3-desktop">
+        <div class="box has-text-centered">
+          <span class="icon is-large mb-3">
+            <i class="fas fa-circle-nodes fa-2x"></i>
+          </span>
+          <p class="title is-3 mb-1">260,774</p>
+          <p class="subtitle is-6 mb-0">surface points</p>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="box has-text-centered" style="height: 100%;">
+          <div class="icon is-large" style="margin-bottom: 0.5rem;">
+            <i class="fas fa-project-diagram fa-2x"></i>
+          </div>
+          <p class="title is-4" style="margin-bottom: 0.25rem;">No</p>
+          <p class="content">
+            mesh connectivity is available.
+          </p>
+        </div>
+      </div>
+
     </div>
-
-    <div class="content has-text-centered mt-5">
-      <p class="is-size-6">
-        Predicting
-        <strong><em>C</em><sub>p</sub></strong>,
-        <strong><em>C</em><sub>f,x</sub></strong>,
-        <strong><em>C</em><sub>f,y</sub></strong>, and
-        <strong><em>C</em><sub>f,z</sub></strong>
-        over the complete aircraft surface.
-      </p>
-    </div>
-
-    <div class="content has-text-centered mt-5">
-      <figure class="image has-text-centered">
-      <img src="static/images/crm_geometry-opt.png"
-           alt="CRM-WBPN configuration"
-           style="width: 60%; margin: 0 auto;">
-      </figure>
-
-      <p class="is-size-7">
-        <strong>CRM-WBPN configuration.</strong>
-      </p>
-    </div>
-
   </div>
 </section>
     
-<!-- ========================= Challenge -->
-<section class="section">
-  <div class="container is-max-desktop">
-    <h2 class="title is-3">The Challenge</h2>
-
-    <div class="content">
-      <p>
-        The ONERA CRM Wall Distribution Challenge considers the prediction of
-        aerodynamic surface quantities for the NASA CRM Wing-Body-Pylon-Nacelle (CRM-WBPN) configuration.
-        Given the surface geometry and aerodynamic conditions, the objective is
-        to predict the pressure coefficient and the three components of the
-        skin-friction coefficient over 260,774 surface points.
-      </p>
-
-      <p>
-        The dataset contains 468 Computational Fluid Dynamics (CFD) simulations, with 312 configurations
-        available for model development. The challenge is demanding because the dataset combines
-        a complex three-dimensional geometry, multiple aerodynamic regimes,
-        localized flow phenomena such as shocks and separation, and a limited
-        number of available CFD simulations. The CFD mesh connectivity is not
-        provided. Only surface coordinates, surface normals,
-        aerodynamic conditions, and wall quantities are available.
-      </p>
-    </div>
-
-    <figure class="image has-text-centered">
-      <img src="static/images/crm_geometry-opt.png"
-           alt="CRM-WBPN configuration"
-           style="width: 60%; margin: 0 auto;">
-    </figure>
-  </div>
-</section>
-
 
 <!-- ========================= Method -->
 
