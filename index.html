@@ -168,43 +168,28 @@
   </figure>
 </div>
 
-    
+<!-- ========================= Challenge -->
 <section class="section">
   <div class="container is-max-desktop">
-
     <h2 class="title is-3 has-text-centered">The Challenge</h2>
-
     <div class="content has-text-centered">
       <p>
         Predict the aerodynamic surface fields of the complex
-        <strong>ONERA CRM-WBPN</strong> configuration from geometry and
+        NASA CRM Wing-Body-Pylon-Nacelle (CRM-WBPN) configuration from geometry and
         flow conditions, without access to CFD mesh connectivity.
       </p>
     </div>
 
+    <div class="notification is-link is-light" style="border-left: 6px solid #3273dc;">
+      <p class="title is-5" style="margin-bottom: 0.5rem;">
+        Task
+      </p>
+      <p class="content is-medium" style="font-size: 1.15rem; line-height: 1.6;">
+        <strong>Predict the aerodynamic surface fields of the complex NASA CRM Wing-Body-Pylon-Nacelle (CRM-WBPN) configuration from geometry and flow conditions, without access to CFD mesh connectivity.</strong>
+      </p>
+    </div>
+
     <div class="columns is-multiline is-centered">
-
-      <!-- Surface points -->
-      <div class="column is-6-mobile is-3-desktop">
-        <div class="box has-text-centered">
-          <span class="icon is-large mb-3">
-            <i class="fas fa-braille fa-2x"></i>
-          </span>
-          <p class="title is-3 mb-1">260,774</p>
-          <p class="subtitle is-6 mb-0">surface points</p>
-        </div>
-      </div>
-
-      <!-- CFD simulations -->
-      <div class="column is-6-mobile is-3-desktop">
-        <div class="box has-text-centered">
-          <span class="icon is-large mb-3">
-            <i class="fas fa-database fa-2x"></i>
-          </span>
-          <p class="title is-3 mb-1">468</p>
-          <p class="subtitle is-6 mb-0">CFD simulations</p>
-        </div>
-      </div>
 
       <!-- Predicted quantities -->
       <div class="column is-6-mobile is-3-desktop">
@@ -216,15 +201,16 @@
           <p class="subtitle is-6 mb-0">aerodynamic quantities</p>
         </div>
       </div>
+      
 
-      <!-- Mesh connectivity -->
+      <!-- CFD simulations -->
       <div class="column is-6-mobile is-3-desktop">
         <div class="box has-text-centered">
           <span class="icon is-large mb-3">
-            <i class="fas fa-project-diagram fa-2x"></i>
+            <i class="fas fa-database fa-2x"></i>
           </span>
-          <p class="title is-3 mb-1">No</p>
-          <p class="subtitle is-6 mb-0">mesh connectivity</p>
+          <p class="title is-3 mb-1">312</p>
+          <p class="subtitle is-6 mb-0">CFD simulations for training</p>
         </div>
       </div>
 
@@ -242,14 +228,14 @@
     </div>
 
     <div class="content has-text-centered mt-5">
-      <figure class="image">
-        <img src="static/images/crm_geometry.png"
-             alt="ONERA CRM-WBPN configuration"
-             style="width: 80%; margin: 0 auto;">
+      <figure class="image has-text-centered">
+      <img src="static/images/crm_geometry-opt.png"
+           alt="CRM-WBPN configuration"
+           style="width: 60%; margin: 0 auto;">
       </figure>
 
       <p class="is-size-7">
-        <strong>ONERA CRM-WBPN configuration.</strong>
+        <strong>CRM-WBPN configuration.</strong>
       </p>
     </div>
 
