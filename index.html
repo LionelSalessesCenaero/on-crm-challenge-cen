@@ -76,7 +76,8 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">Neural Field Ensembles for Aerodynamic Surface Prediction: Winning Solution to the ONERA CRM Wall Distribution 2025 Challenge</h1>
+            <h1 class="title is-1 publication-title">Neural Field Ensembles for Aerodynamic Surface Prediction</h1>
+            <h2 class="title is-2 publication-title">Winning Solution to the ONERA CRM Wall Distribution 2025 Challenge</h2>
             <div class="is-size-5 publication-authors">
               <span class="author-block">Lionel Salesses,</span>
                 <span class="author-block">Caroline Sainvitu,</span>
@@ -87,34 +88,84 @@
               <span class="author-block">Cenaero<br>2026</span>
             </div>
 
-            <div class="column has-text-centered">
-              <div class="publication-links">
-                <span class="link-block">
-                  <a href="https://arxiv.org/pdf/2609.17160.pdf" target="_blank"
-                    class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                    <i class="fas fa-file-pdf"></i>
-                  </span>
-                  <span>Paper</span>
-                  </a>
-                </span>
+            <span class="link-block">
+              <a href="https://arxiv.org/abs/2609.17160" target="_blank"
+                class="external-link button is-normal is-rounded is-dark">
+              <span class="icon"><i class="ai ai-arxiv"></i></span>
+              <span>arXiv</span>
+              </a>
+            </span>
 
-                <span class="link-block">
-                  <a href="https://arxiv.org/abs/2609.17160" target="_blank"
-                    class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                    <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span>
-                  </a>
-                </span>
-              </div>
-            </div>
+            <span class="link-block">
+              <a href="https://www.codabench.org/competitions/7535/" target="_blank"
+                class="external-link button is-normal is-rounded is-dark">
+              <span class="icon"><i class="fas fa-trophy"></i></span>
+              <span>Challenge</span>
+              </a>
+            </span>
+            
           </div>
       </div>
     </div>
   </div>
 </section>
+
+    
+<section class="section pt-0">
+  <div class="container is-max-desktop">
+
+    <div class="content has-text-centered">
+      <h2 class="title is-2">First-Place Solution</h2>
+
+      <p class="is-size-5">
+        A coordinate-based conditional neural field predicts aerodynamic surface
+        quantities directly from geometry and flow conditions, without requiring
+        CFD mesh connectivity.
+      </p>
+    </div>
+
+    <div class="columns is-centered has-text-centered">
+
+      <div class="column is-4">
+        <div class="box">
+          <p class="title is-1">8.81</p>
+          <p class="subtitle is-6">Final competition score</p>
+        </div>
+      </div>
+
+      <div class="column is-4">
+        <div class="box">
+          <p class="title is-1">8.64</p>
+          <p class="subtitle is-6">
+            Strongest organizer-provided baseline
+          </p>
+        </div>
+      </div>
+
+      <div class="column is-4">
+        <div class="box">
+          <p class="title is-1">~230×</p>
+          <p class="subtitle is-6">
+            Fewer trainable parameters
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="content has-text-centered">
+      <p>
+        On the hidden competition test set, the proposed methodology achieves
+        a score of <strong>8.81</strong>, compared with <strong>8.64</strong>
+        for the strongest organizer-provided baseline, while using approximately
+        three orders of magnitude fewer trainable parameters.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
 
 <div class="content has-text-centered">
   <figure class="image">
@@ -333,12 +384,6 @@
 <section class="section">
   <div class="container is-max-desktop">
     <h2 class="title is-3">Resources</h2>
-
-    <a class="button is-link"
-       href="https://www.codabench.org/competitions/7535/"
-       target="_blank">
-      <span>Challenge page on Codabench</span>
-    </a>
 
     <a class="button is-link"
          href="https://www.codabench.org/competitions/7535/#/results-tab"
